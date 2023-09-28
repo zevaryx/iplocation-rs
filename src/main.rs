@@ -23,7 +23,7 @@ impl fmt::Display for IpLocation {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         write!(
             f,
-            "IPv{}: {}\nIP Decimal: {}\nCountry: {} ({})\nISP: {}",
+            "      IPv{}: {}\nIP Decimal: {}\n   Country: {} ({})\n       ISP: {}",
             self.ip_version,
             self.ip,
             self.ip_number,
