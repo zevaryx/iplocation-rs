@@ -44,7 +44,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: Install apt packages
-        run: sudo apt update && sudo apt upgrade -y && sudo apt-get install pkg-config libssl-dev
+        run: sudo apt update && sudo apt upgrade -y && sudo apt-get install pkg-config libssl-dev gcc-aarch64-linux-gnu
         if: ${{ contains(matrix.target, 'linux') }}
       - uses: actions/checkout@v4
       - uses: taiki-e/upload-rust-binary-action@v1
