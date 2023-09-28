@@ -47,12 +47,9 @@ jobs:
         run: sudo apt update && sudo apt upgrade -y && sudo apt-get install pkg-config libssl-dev
         if: ${{ contains(matrix.target, 'linux') }}
       - uses: actions/checkout@v4
-      - uses: taiki-e/install-action@cargo-hack
       - uses: taiki-e/upload-rust-binary-action@v1
         with:
           bin: iplocation
           target: ${{ matrix.target }}
-          tar: all
-          zip: windows
           token: ${{ secrets.GITHUB_TOKEN }}
           checksum: sha256
