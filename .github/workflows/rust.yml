@@ -1,5 +1,8 @@
 name: Release
 
+permissions:
+    contents: write
+
 on:
   push:
     tags:
@@ -18,10 +21,7 @@ jobs:
   create-release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: taiki-e/install-action@cargo-hack
-        with:
-          toolchain: stable
+      - uses: actions/checkout@v4
       - uses: taiki-e/create-gh-release-action@v1
         with:
           changelog: CHANGELOG.md
@@ -46,10 +46,8 @@ jobs:
       - name: Install apt packages
         run: sudo apt update && sudo apt upgrade -y && sudo apt-get install pkg-config libssl-dev
         if: ${{ contains(matrix.target, 'linux') }}
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: taiki-e/install-action@cargo-hack
-        with:
-          toolchain: stable
       - uses: taiki-e/upload-rust-binary-action@v1
         with:
           bin: iplocation
